@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 .vscode
-=======
+
 # Prerequisites
 *.d
 
@@ -33,4 +32,3 @@
 *.exe
 *.out
 *.app
->>>>>>> 47fd5753b91c3cb6216c3f449469fe3815301900
