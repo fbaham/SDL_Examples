@@ -1,5 +1,9 @@
 #include <iostream>
+#include <stdio.h>
 #include "Game.h"
+#include <SDL_image.h>
+#include "Framework/TextureManager.h"
+
 
 using namespace std;
 
@@ -25,7 +29,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			if(m_pRenderer != 0) // renderer init success
 			{
 				std::cout << "renderer creation success\n";
-				SDL_SetRenderDrawColor (m_pRenderer, 255,255,255,255);
+				SDL_SetRenderDrawColor (m_pRenderer, 100,149,237,255);
 			}
 			else
 			{
@@ -47,25 +51,25 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	std::cout << "init success\n";
 
-	SDL_Surface* pTempSurface = SDL_LoadBMP("assets/rider.bmp");
-
-	m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
-	SDL_FreeSurface;
-	SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h);
-
-	m_destinationRectangle.x = m_sourceRectangle.x = 0;
-	m_destinationRectangle.y = m_sourceRectangle.y = 0;
-	m_destinationRectangle.w = m_sourceRectangle.w;
-	m_destinationRectangle.h = m_sourceRectangle.h;
+	TheTextureManager::Instance()->load("assets/animate-alpha.png", "animate", m_pRenderer);
 
 	m_bRunning = true; // everything inited successfully, start the main loop
 	return true;
 }
 
+void Game::update()
+{
+	m_currentFrame = int (((SDL_GetTicks() / 100) % 6));
+}
+
 void Game::render()
 {
 	SDL_RenderClear(m_pRenderer); // clear the renderer to the draw color
-	SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle);
+	
+	TheTextureManager::Instance()->draw("animate", 0, 0, 128, 82, m_pRenderer);
+
+	TheTextureManager::Instance()->drawFrame("animate", 100, 100, 128, 82, 1, m_currentFrame, m_pRenderer);
+
 	SDL_RenderPresent(m_pRenderer); // draw the screen
 }
 

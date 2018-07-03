@@ -1,14 +1,14 @@
 #OBJS specifies which files to compile as part of the project
-OBJS = src\Main.cpp src\Game.cpp
+OBJS = src\Main.cpp src\Game.cpp src\Framework\TextureManager.cpp
 
 #CC specifies which compiler we're using
 CC = g++
 
 #INCLUDE_PATHS specifies the additional include paths we'll need
-INCLUDE_PATHS = -IC:\TDM-GCC-64\include\SDL2
+INCLUDE_PATHS = -IC:\MinGW\include\SDL2
 
 #LIBRARY_PATHS specifies the additional library paths we'll need
-LIBRARY_PATHS = -LC:\TDM-GCC-64\lib
+LIBRARY_PATHS = -LC:\MinGW\lib
 
 #COMPILER_FLAGS specifies the additional compilation options we're using
 # -w suppresses all warnings
@@ -16,8 +16,7 @@ LIBRARY_PATHS = -LC:\TDM-GCC-64\lib
 COMPILER_FLAGS = -w -Wl,-subsystem,windows
 
 #LINKER_FLAGS specifies the libraries we're linking against
-LINKER_FLAGS = -lmingw32 -lSDL2main -lSDL2
-
+LINKER_FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image
 #OBJ_NAME specifies the name of our exectuable
 OBJ_NAME = bin\Debug\main
 
