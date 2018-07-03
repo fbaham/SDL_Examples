@@ -5,10 +5,10 @@ OBJS = src\Main.cpp src\Game.cpp src\Framework\TextureManager.cpp
 CC = g++
 
 #INCLUDE_PATHS specifies the additional include paths we'll need
-INCLUDE_PATHS = -IC:\MinGW\include\SDL2
+INCLUDE_PATHS = -IC:\TDM-GCC-64\include\SDL2
 
 #LIBRARY_PATHS specifies the additional library paths we'll need
-LIBRARY_PATHS = -LC:\MinGW\lib
+LIBRARY_PATHS = -LC:\TDM-GCC-64\lib
 
 #COMPILER_FLAGS specifies the additional compilation options we're using
 # -w suppresses all warnings
