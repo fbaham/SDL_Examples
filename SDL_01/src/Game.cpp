@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stdio.h>
 #include "Game.h"
-#include <SDL_image.h>
+#include <SDL2/SDL_image.h>
 #include "Framework/TextureManager.h"
 #include "GameObject.h"
 #include "Player.h"

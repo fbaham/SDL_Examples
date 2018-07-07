@@ -2,7 +2,7 @@
 #define __ENEMY__
 #include <iostream>
 #include "GameObject.h"
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 class Enemy : public GameObject
 {

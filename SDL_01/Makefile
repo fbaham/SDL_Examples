@@ -5,7 +5,7 @@ OBJS = src\Main.cpp src\Game.cpp src\GameObject.cpp src\Player.cpp src\Enemy.cpp
 CC = g++
 
 #INCLUDE_PATHS specifies the additional include paths we'll need
-INCLUDE_PATHS = -IC:\TDM-GCC-64\include\SDL2
+INCLUDE_PATHS = -IC:\TDM-GCC-64\include
 
 #LIBRARY_PATHS specifies the additional library paths we'll need
 LIBRARY_PATHS = -LC:\TDM-GCC-64\lib

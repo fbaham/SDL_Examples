@@ -2,7 +2,7 @@
 #define __PLAYER__
 #include <iostream>
 #include "GameObject.h"
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 class Player : public GameObject // inerit from GameObject
 {

@@ -1,6 +1,6 @@
 #ifndef __Game__
 #define __Game__
-#include<SDL.h>
+#include<SDL2/SDL.h>
 #include"GameObject.h"
 #include"Player.h"
 #include <vector>

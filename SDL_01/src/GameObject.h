@@ -1,7 +1,7 @@
 #ifndef __GAME_OBJECT__
 #define __GAME_OBJECT__
 #include <iostream>
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 class GameObject
 {
