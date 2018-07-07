@@ -1,25 +1,27 @@
 #OBJS specifies which files to compile as part of the project
-OBJS = src\Main.cpp src\Game.cpp src\GameObject.cpp src\Player.cpp src\Enemy.cpp src\Framework\TextureManager.cpp
+OBJS = src/Main.cpp src/Game.cpp src/GameObject.cpp src/Player.cpp src/Enemy.cpp src/Framework/TextureManager.cpp
+
+
 
 #CC specifies which compiler we're using
 CC = g++
 
 #INCLUDE_PATHS specifies the additional include paths we'll need
-INCLUDE_PATHS = -IC:\TDM-GCC-64\include
+#INCLUDE_PATHS = -IC:\TDM-GCC-64\include
 
 #LIBRARY_PATHS specifies the additional library paths we'll need
-LIBRARY_PATHS = -LC:\TDM-GCC-64\lib
+#LIBRARY_PATHS = -LC:\TDM-GCC-64\lib
 
 #COMPILER_FLAGS specifies the additional compilation options we're using
 # -w suppresses all warnings
 # -Wl,-subsystem,windows gets rid of the console window
-COMPILER_FLAGS = -w -Wl,-subsystem,windows
+COMPILER_FLAGS = -w
 
 #LINKER_FLAGS specifies the libraries we're linking against
-LINKER_FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image
+LINKER_FLAGS = -lSDL2main -lSDL2 -lSDL2_image
 #OBJ_NAME specifies the name of our exectuable
-OBJ_NAME = bin\Debug\main
+OBJ_NAME = bin/Debug/main
 
 #This is the target that compiles our executable
 all : $(OBJS)
-	$(CC) $(OBJS) $(INCLUDE_PATHS) $(LIBRARY_PATHS) $(COMPILER_FLAGS) $(LINKER_FLAGS) -o $(OBJ_NAME)
+	$(CC) $(OBJS) $(COMPILER_FLAGS) $(LINKER_FLAGS) -o $(OBJ_NAME)
