@@ -1,5 +1,5 @@
-#include "Framework/TextureManager.h"
-#include "Framework/LoaderParams.h"
+#include "TextureManager.h"
+#include "LoaderParams.h"
 #include "SDLGameObject.h"
 #include "GameObject.h"
 #include "Game.h"

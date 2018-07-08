@@ -1,7 +1,7 @@
 #ifndef __SDL_GAME_OBJECT__
 #define __SDL_GAME_OBJECT__
 
-#include "Framework/LoaderParams.h"
+#include "LoaderParams.h"
 #include "GameObject.h"
 
 class SDLGameObject : public GameObject

@@ -2,7 +2,7 @@
 #define __GAME_OBJECT__
 
 #include <iostream>
-#include "Framework/LoaderParams.h"
+#include "LoaderParams.h"
 
 class GameObject
 {

@@ -1,6 +1,6 @@
 #include <iostream>
-#include "Framework/TextureManager.h"
-#include "Framework/LoaderParams.h"
+#include "TextureManager.h"
+#include "LoaderParams.h"
 #include "Game.h"
 #include "Player.h"
 #include "Enemy.h"

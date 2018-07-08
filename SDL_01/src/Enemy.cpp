@@ -1,4 +1,4 @@
-#include "Framework/LoaderParams.h"
+#include "LoaderParams.h"
 #include "Enemy.h"
 #include "SDLGameObject.h"
 
@@ -14,7 +14,7 @@ void Enemy::draw()
 
 void Enemy::update()
 {
-	m_x--;
+	m_x++;
 	m_currentFrame = int(((SDL_GetTicks() / 100) % 6));
 }
 

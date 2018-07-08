@@ -261,7 +261,7 @@ int main()
 
 	#ifdef TIXML_USE_STL
 		printf( "** Demo doc processed to stream: ** \n\n" );
-		cout << doc << endl << endl;
+		std::cout << doc << endl << endl;
 	#endif
 
 		// --------------------------------------------------------
