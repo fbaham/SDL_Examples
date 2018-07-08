@@ -1,13 +1,14 @@
 #include <iostream>
-#include <stdio.h>
-#include "Game.h"
-#include <SDL2/SDL_image.h>
 #include "Framework/TextureManager.h"
-#include "GameObject.h"
+#include "Framework/LoaderParams.h"
+#include "Game.h"
 #include "Player.h"
 #include "Enemy.h"
 
+
 using namespace std;
+
+Game* Game::s_pInstance = 0;
 
 bool Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
@@ -55,17 +56,8 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	TheTextureManager::Instance()->load("assets/animate-alpha.png", "animate", m_pRenderer);
 
-	m_go = new GameObject();
-	m_player = new Player();
-	m_enemy = new Enemy();
-
-	m_go->load(100, 100, 128, 82, "animate");
-	m_player->load(300, 300, 128, 82, "animate");
-	m_enemy->load(0, 0, 128, 82, "animate");
-
-	m_gameObjects.push_back(m_go);
-	m_gameObjects.push_back(m_player);
-	m_gameObjects.push_back(m_enemy);
+	m_gameObjects.push_back(new Player(new LoaderParams(100,100,128,82,"animate")));
+	m_gameObjects.push_back(new Enemy(new LoaderParams(300,300,128,82,"animate")));
 
 	m_bRunning = true; // everything inited successfully, start the main loop
 	return true;
@@ -85,7 +77,7 @@ void Game::render()
 	
 	for(std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
 	{
-		m_gameObjects[i]->draw(m_pRenderer);
+		m_gameObjects[i]->draw();
 	}
 
 	SDL_RenderPresent(m_pRenderer); // draw the screen
@@ -95,7 +87,7 @@ void Game::draw()
 {
 	for(std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
 	{
-		m_gameObjects[i]->draw(m_pRenderer);
+		m_gameObjects[i]->draw();
 	}
 }
 

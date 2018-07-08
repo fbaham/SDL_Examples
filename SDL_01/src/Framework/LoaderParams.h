@@ -1,4 +1,8 @@
+#ifndef __LOADER_PARAMS__
+#define __LOADER_PARAMS__
+
 #include <SDL2/SDL.h>
+#include <string>
 
 class LoaderParams
 {
@@ -12,7 +16,7 @@ public:
 	int getY() const { return m_y; }
 	int getWidth() const { return m_width; }
 	int getHeight() const { return m_height; }
-	std::string getTextureID const { return m_textureID; }
+	std::string getTextureID() const { return m_textureID; }
 private:
 
 	std::string m_textureID;
@@ -24,3 +28,5 @@ private:
 	int m_height;
 
 };
+
+#endif

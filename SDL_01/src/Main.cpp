@@ -2,25 +2,29 @@
 #include<stdio.h>
 #include"Game.h"
 
-// our Game Object
-Game* g_game = 0;
-
-SDL_Window* g_pWindow = 0;
-SDL_Renderer* g_pRenderer = 0;
-
 int main(int argc, char* args[])
 {
-	g_game = new Game();
-	g_game -> init("Chapter 1", 100, 100, 1280, 720, false);
-	while(g_game -> running())
+	std::cout << "game init success!\n";
+	if(TheGame::Instance()->init("Chapter 1", 100, 100, 1366, 768, false))
 	{
-		g_game -> handleEvents();
-		g_game -> update();
-		g_game -> render();
+		std::cout << "game init success!\n";
+		while(TheGame::Instance()->running())
+		{
+			TheGame::Instance()->handleEvents();
+			TheGame::Instance()->update();
+			TheGame::Instance()->render();
 
-		SDL_Delay(10);
+			SDL_Delay(10);
+		}
 	}
-	g_game -> clean();
-	
+	else
+	{
+		std::cout << "game init failure - " << SDL_GetError() << "\n";
+		return -1;
+	}
+	std::cout << "game closing...\n";
+	TheGame::Instance()->clean();
+
 	return 0;
 }
+
