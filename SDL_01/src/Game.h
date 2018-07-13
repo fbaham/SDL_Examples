@@ -3,6 +3,7 @@
 #include <SDL2/SDL.h>
 #include <vector>
 #include "GameObject.h"
+#include "InputHandler.h"
 
 class Game
 {
@@ -25,6 +26,7 @@ public:
 	void draw();
 	void handleEvents();
 	void clean();
+	void quit() { m_bRunning = false; }
 
 	// a function to access the private running variable
 	bool running() { return m_bRunning; }

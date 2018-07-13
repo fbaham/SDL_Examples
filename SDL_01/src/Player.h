@@ -4,7 +4,6 @@
 #include "LoaderParams.h"
 #include "SDLGameObject.h"
 
-
 class Player : public SDLGameObject // inerit from GameObject
 {
 public:
@@ -14,6 +13,9 @@ public:
 	virtual void draw();
 	virtual void update();
 	virtual void clean();
+
+private:
+	void handleInput();
 };
 
 #endif

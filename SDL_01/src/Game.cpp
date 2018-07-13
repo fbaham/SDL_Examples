@@ -1,4 +1,5 @@
 #include <iostream>
+#include "InputHandler.h"
 #include "TextureManager.h"
 #include "LoaderParams.h"
 #include "Game.h"
@@ -54,6 +55,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	std::cout << "init success\n";
 
+	TheInputHandler::Instance()->initialiseJoysticks();
 	TheTextureManager::Instance()->load("assets/animate-alpha.png", "animate", m_pRenderer);
 
 	m_gameObjects.push_back(new Player(new LoaderParams(100,100,128,82,"animate")));
@@ -93,19 +95,7 @@ void Game::draw()
 
 void Game::handleEvents()
 {
-	SDL_Event event;
-	if(SDL_PollEvent(&event))
-	{
-		switch(event.type)
-		{
-			case SDL_QUIT:
-				m_bRunning = false;
-			break;
-
-			default:
-			break;
-		}
-	}
+	TheInputHandler::Instance()->update();
 }
 
 void Game::clean()
@@ -113,5 +103,6 @@ void Game::clean()
 	std::cout << "cleaning game\n";
 	SDL_DestroyWindow(m_pWindow);
 	SDL_DestroyRenderer(m_pRenderer);
+	TheInputHandler::Instance()->clean();
 	SDL_Quit();
 }
