@@ -1,5 +1,6 @@
 #include "MenuButton.h"
 #include "InputHandler.h"
+#include <iostream>
 
 MenuButton::MenuButton(const LoaderParams* pParams, void (*callback)()): SDLGameObject(pParams), m_callback(callback)
 {
@@ -21,6 +22,7 @@ void MenuButton::update()
 	{
 		if(TheInputHandler::Instance()->getMouseButtonState(LEFT) && m_bReleased)
 		{
+			std::cout << "click\n";
 			m_currentFrame = CLICKED;
 			m_callback(); // call our callback function
 			m_bReleased = false;

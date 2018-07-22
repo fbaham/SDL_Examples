@@ -24,13 +24,13 @@ void PlayState::render()
 
 bool PlayState::onEnter()
 {
+	std::cout << "entering PlayState\n";
 	if(!TheTextureManager::Instance()->load("assets/helicopter.png", "helicopter", TheGame::Instance()->getRenderer()))
 	{
 		return false;
 	}
 	GameObject* player = new Player(new LoaderParams(100, 100, 128,55, "helicopter"));
 	m_gameObjects.push_back(player);
-	std::cout << "entering PlayState\n";
 	return true;
 }
 

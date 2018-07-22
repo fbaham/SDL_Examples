@@ -8,6 +8,7 @@ void GameStateMachine::update()
 		std::cout << "Nada cargado";
 		return;
 	}
+	m_gameStates.back()->getStateID();
 	m_gameStates.back()->update();
 }
 
