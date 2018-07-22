@@ -42,10 +42,10 @@ void GameStateMachine::popState()
 
 void GameStateMachine::changeState(GameState *pState)
 {
-	std::cout << "Change State";
+	std::cout << "Change State\n";
 	if(!m_gameStates.empty())
 	{
-		std::cout << "GameStates empty";
+		std::cout << "GameStates empty\n";
 		if(m_gameStates.back()->getStateID() == pState->getStateID())
 		{
 			return; // do nothing
