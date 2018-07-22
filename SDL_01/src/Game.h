@@ -4,6 +4,7 @@
 #include <vector>
 #include "GameObject.h"
 #include "InputHandler.h"
+#include "GameStateMachine.h"
 
 class Game
 {
@@ -30,6 +31,8 @@ public:
 
 	// a function to access the private running variable
 	bool running() { return m_bRunning; }
+	
+	GameStateMachine* getStateMachine(){ return m_pGameStateMachine; }
 private:
 	Game(){}
 
@@ -40,6 +43,8 @@ private:
 
 	std::vector<GameObject*> m_gameObjects;
 
+	GameStateMachine* m_pGameStateMachine;
+	
 	int m_currentFrame;
 
 	bool m_bRunning;

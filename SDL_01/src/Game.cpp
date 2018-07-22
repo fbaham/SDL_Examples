@@ -5,7 +5,9 @@
 #include "Game.h"
 #include "Player.h"
 #include "Enemy.h"
-
+#include "GameStateMachine.h"
+#include "PlayState.h"
+#include "MenuState.h"
 
 using namespace std;
 
@@ -61,26 +63,27 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	m_gameObjects.push_back(new Player(new LoaderParams(100,100,128,82,"animate")));
 	m_gameObjects.push_back(new Enemy(new LoaderParams(300,300,128,82,"animate")));
 
+	m_pGameStateMachine = new GameStateMachine();
+	m_pGameStateMachine->changeState(new MenuState());
+
 	m_bRunning = true; // everything inited successfully, start the main loop
 	return true;
 }
 
 void Game::update()
 {
-	for(std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->update();
-	}
+	// for(std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
+	// {
+	// 	m_gameObjects[i]->update();
+	// }
+	m_pGameStateMachine->update();
 }
 
 void Game::render()
 {
 	SDL_RenderClear(m_pRenderer); // clear the renderer to the draw color
 	
-	for(std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->draw();
-	}
+	m_pGameStateMachine->render();
 
 	SDL_RenderPresent(m_pRenderer); // draw the screen
 }
@@ -96,6 +99,11 @@ void Game::draw()
 void Game::handleEvents()
 {
 	TheInputHandler::Instance()->update();
+
+	if(TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN))
+	{
+		m_pGameStateMachine->changeState(new PlayState());
+	}
 }
 
 void Game::clean()

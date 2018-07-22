@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 shaun mitchell. All rights reserved.
 //
 
-#ifndef __SDL_Game_Programming_Book__InputHandler__
-#define __SDL_Game_Programming_Book__InputHandler__
+#ifndef __INPUT_HANDLER__
+#define __INPUT_HANDLER__
 
 #include <iostream>
 #include <vector>
