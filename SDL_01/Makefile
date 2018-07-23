@@ -1,7 +1,7 @@
 #OBJS specifies which files to compile as part of the project
 OBJS := src/Main.cpp src/Game.cpp src/InputHandler.cpp src/SDLGameObject.cpp src/Player.cpp src/Enemy.cpp src/TextureManager.cpp
-OBJS := $(OBJS) src/GameStateMachine.cpp src/PlayState.cpp src/MenuState.cpp src/MenuButton.cpp src/PauseState.cpp src/AnimatedGraphic.cpp
-OBJS := $(OBJS) src/GameOverState.cpp
+OBJS := $(OBJS) src/GameStateMachine.cpp src/PlayState.cpp src/MainMenuState.cpp src/MenuButton.cpp src/PauseState.cpp src/AnimatedGraphic.cpp
+OBJS := $(OBJS) src/GameOverState.cpp src/GameObjectFactory.cpp src/StateParser.cpp
 
 #CC specifies which compiler we're using
 CC = g++

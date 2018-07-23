@@ -8,6 +8,9 @@
 #include "GameStateMachine.h"
 #include "PlayState.h"
 #include "MenuState.h"
+#include "MainMenuState.h"
+#include "GameObjectFactory.h"
+#include "MenuButton.h"
 
 using namespace std;
 
@@ -54,17 +57,14 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		std::cout << "SDL init fail\n";
 		return false; //SDL init fail
 	}
-
 	std::cout << "init success\n";
 
 	TheInputHandler::Instance()->initialiseJoysticks();
-	TheTextureManager::Instance()->load("assets/animate-alpha.png", "animate", m_pRenderer);
 
-	m_gameObjects.push_back(new Player(new LoaderParams(100,100,128,82,"animate")));
-	m_gameObjects.push_back(new Enemy(new LoaderParams(300,300,128,82,"animate")));
+	TheGameObjectFactory::Instance()->registerType("MenuButton", new MenuButtonCreator());
 
 	m_pGameStateMachine = new GameStateMachine();
-	m_pGameStateMachine->changeState(new MenuState());
+	m_pGameStateMachine->changeState(new MainMenuState());
 
 	m_bRunning = true; // everything inited successfully, start the main loop
 	return true;
@@ -72,10 +72,6 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 void Game::update()
 {
-	// for(std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
-	// {
-	// 	m_gameObjects[i]->update();
-	// }
 	m_pGameStateMachine->update();
 }
 
@@ -90,10 +86,7 @@ void Game::render()
 
 void Game::draw()
 {
-	for(std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->draw();
-	}
+
 }
 
 void Game::handleEvents()

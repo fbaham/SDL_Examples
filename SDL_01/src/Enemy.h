@@ -8,7 +8,8 @@
 class Enemy : public SDLGameObject
 {
 public:
-	Enemy (const LoaderParams* pParams);
+	Enemy ();
+	virtual void load(const LoaderParams* pParams);
 	//void load(int x, int y, int width, int height, std::string textureID);
 	virtual void draw();
 	virtual void update();

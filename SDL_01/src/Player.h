@@ -7,8 +7,8 @@
 class Player : public SDLGameObject // inerit from GameObject
 {
 public:
-	Player (const LoaderParams* pParams);
-
+	Player ();
+	virtual void load(const LoaderParams* pParams);
 	//void load(int x, int y, int width, int height, std::string textureID);
 	virtual void draw();
 	virtual void update();
