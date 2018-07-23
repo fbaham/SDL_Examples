@@ -28,7 +28,6 @@ void Player::update()
 
 void Player::clean()
 {
-	
 }
 
 // void Player::handleInput()
