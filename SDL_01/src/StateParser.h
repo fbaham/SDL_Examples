@@ -3,7 +3,9 @@
 
 #include <iostream>
 #include <vector>
-#include "../tinyxml/tinyxml.h"
+#include "tinyxml2.h"
+
+using namespace tinyxml2;
 
 class GameObject;
 
@@ -18,8 +20,8 @@ public:
     
 private:
     
-    void parseObjects(TiXmlElement* pStateRoot, std::vector<GameObject*> *pObjects);
-    void parseTextures(TiXmlElement* pStateRoot, std::vector<std::string> *pTextureIDs);
+    void parseObjects(XMLElement* pStateRoot, std::vector<GameObject*> *pObjects);
+    void parseTextures(XMLElement* pStateRoot, std::vector<std::string> *pTextureIDs);
 };
 
 #endif

@@ -1,7 +1,6 @@
 #include <iostream>
 #include "InputHandler.h"
 #include "TextureManager.h"
-#include "LoaderParams.h"
 #include "Game.h"
 #include "Player.h"
 #include "Enemy.h"
