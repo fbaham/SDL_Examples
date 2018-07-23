@@ -11,10 +11,16 @@ const std::string MainMenuState::s_menuID = "MENU";
 
 void MainMenuState::update()
 {
-	for(int i = 0; i < m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->update();
-	}
+	if(!m_gameObjects.empty())
+    {
+		for(int i = 0; i < m_gameObjects.size(); i++)
+		{
+			if(m_gameObjects[i] != 0)
+			{
+				m_gameObjects[i]->update();
+			}
+		}
+    }
 }
 
 void MainMenuState::render()
@@ -41,19 +47,22 @@ bool MainMenuState::onEnter()
 
 bool MainMenuState::onExit()
 {
-	std::cout << "exiting MainMenuState\n";
+	//m_exiting = true;	
 	for(int i = 0; i < m_gameObjects.size(); i++)
 	{
-		m_gameObjects[i]->clean();
+		m_gameObjects.back()->clean();
+		m_gameObjects.pop_back();
 	}
 	m_gameObjects.clear();
 
 	// clear the texture manager
-	for(int i = 0; i < m_textureIDList.size(); i++)
-	{
-		TheTextureManager::Instance()->clearFromTextureMap(m_textureIDList[i]);
-	}
+	// for(int i = 0; i < m_textureIDList.size(); i++)
+	// {
+	// 	TheTextureManager::Instance()->clearFromTextureMap(m_textureIDList[i]);
+	// }
 	TheInputHandler::Instance()->reset();
+
+	std::cout << "exiting MainMenuState\n";
 	return true;
 }
 

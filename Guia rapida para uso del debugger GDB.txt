@@ -1,0 +1,89 @@
+Guia rapida para uso del debugger GDB 
+-------------------------------------
+
++ Compilar programas en C con opcion -g
+
+  % gcc -g prog.c ... -o <archivo binario>
+
+  Si no se especifica -o, se genera el archivo a.out
+  
++ Gdb se invoca con:
+ 
+  gdb <archivo binario>
+ 
++ Para obtener ayuda:
+
+  help <comando>
+
++ Poner breakpoint en funciones:
+ 
+  (gdb) b main
+ 
++ Borrar breakpoints:
+ 
+  (gdb) del <nro. del break>
+ 
++ Mostrar nros. de breakpoints
+
+  (gdb) info break
+
++ Correr el programa:
+
+  (gdb) run
+
++ Ver el encadenamiento de funciones de la tarea actual
+  (la que le tiene la CPU en ese momento):
+ 
+  (gdb) where
+ 
++ subir y bajar en la pila para ver variables de funciones intermedias:
+ 
+  (gdb) up    -> Si F llamo a G y estamos en G, pasa a F
+  (gdb) down  -> vuelve a G
+ 
++ Especifico para programas en C:
+
+  - Ejecutar paso a paso instrucciones en C (step y next):
+ 
+    (gdb) s  -> ejecuta una instruccion.  Si hay una llamada a una funcion,
+                se detiene en la primera instruccion de esa funcion.
+    (gdb) n  -> ejecuta una instruccion.  Si  hay llamadas a funciones, se
+                las ejecuta completamente sin detenerse.
+          
+  - Imprimir valores de expresiones
+ 
+    (gdb) p x->a.d + 1  ( p de print )
+ 
+  - Imprimir las variables locales de la funcion examinada:
+ 
+    (gdb) info locals
+
++ Especifico para programas en Assembler:
+
+  - Ejecutar paso a paso instrucciones de maquina:
+
+    (gdb) stepi -> ejecuta una instruccion de maquina.
+    (gdb) nexti -> si es un call, ejecuta el call hasta el retorno,
+                   si no, ejecuta una instruccion de maquina.
+
+    Ambas instrucciones muestran la direccion de la siguiente instruccion
+    a ejecutar en hexadecimal.  Ej.:
+
+    (gdb) 0x080483d4 in dump ()
+
+  - Para mostrar 10 instrucciones de maquina a partir de una direccion
+    en hexadecimal:
+
+    (gdb) x/10i 0x080483d2
+    0x80483d2 <dump+6>:     mov    %ebp,%eax
+    0x80483d4 <dump+8>:     mov    %eax,0xfffffffc(%ebp)
+    0x80483d7 <dump+11>:    mov    0xfffffffc(%ebp),%eax
+
+  - Para mostrar el contenido de los registros
+
+    (gdb) info register
+
+  - Para mostrar el contenido a partir de una direccion en hexadecimal:
+
+    (gdb) x/10x 0xbffff5c8
+    ...
