@@ -41,8 +41,6 @@ private:
 	SDL_Window* m_pWindow;
 	SDL_Renderer* m_pRenderer;
 
-	std::vector<GameObject*> m_gameObjects;
-
 	GameStateMachine* m_pGameStateMachine;
 	
 	int m_currentFrame;

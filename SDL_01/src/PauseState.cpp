@@ -1,16 +1,16 @@
-#include"PauseState.h"
-#include"Game.h"
-#include"MenuState.h"
-#include"MenuButton.h"
-#include"TextureManager.h"
-#include"InputHandler.h"
+#include "PauseState.h"
+#include "Game.h"
+#include "MainMenuState.h"
+#include "MenuButton.h"
+#include "TextureManager.h"
+#include "InputHandler.h"
+#include "LoaderParams.h"
 
 const std::string PauseState::s_pauseID = "PAUSE";
 
 void PauseState::s_pauseToMain()
 {
-	TheGame::Instance()->getStateMachine()->changeState(new
-	MenuState());
+	TheGame::Instance()->getStateMachine()->changeState(new	MainMenuState());
 }
 
 void PauseState::s_resumePlay()
@@ -44,10 +44,10 @@ bool PauseState::onEnter()
 	{
 		return false;
 	}
-	GameObject* button1 = new MenuButton(new LoaderParams(200, 100, 200, 80, "mainbutton"), s_pauseToMain);
-	GameObject* button2 = new MenuButton(new LoaderParams(200, 300,	200, 80, "resumebutton"), s_resumePlay);
-	m_gameObjects.push_back(button1);
-	m_gameObjects.push_back(button2);
+	// GameObject* button1 = new MenuButton(new LoaderParams(200, 100, 200, 80, "mainbutton"), s_pauseToMain);
+	// GameObject* button2 = new MenuButton(new LoaderParams(200, 300,	200, 80, "resumebutton"), s_resumePlay);
+	// m_gameObjects.push_back(button1);
+	// m_gameObjects.push_back(button2);
 	std::cout << "entering PauseState\n";
 	return true;
 }
