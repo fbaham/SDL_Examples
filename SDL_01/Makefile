@@ -1,38 +1,3 @@
-# #OBJS specifies which files to compile as part of the project
-# OBJS := src/Main.cpp src/Game.cpp src/InputHandler.cpp src/SDLGameObject.cpp src/Player.cpp src/Enemy.cpp src/TextureManager.cpp
-# OBJS := $(OBJS) src/GameStateMachine.cpp src/PlayState.cpp src/MainMenuState.cpp src/MenuButton.cpp src/PauseState.cpp src/AnimatedGraphic.cpp
-# OBJS := $(OBJS) src/GameOverState.cpp src/GameObjectFactory.cpp src/StateParser.cpp ../tinyxml/tinyxml.cpp
-
-# #CC specifies which compiler we're using
-# CC = g++
-
-# #INCLUDE_PATHS specifies the additional include paths we'll need
-# INCLUDE_PATHS = -IC:\TDM-GCC-64\include\
-
-# #LIBRARY_PATHS specifies the additional library paths we'll need
-# LIBRARY_PATHS = -LC:\TDM-GCC-64\lib
-
-# #COMPILER_FLAGS specifies the additional compilation options we're using
-# # -w suppresses all warnings
-# # -Wl,-subsystem,windows gets rid of the console window
-# COMPILER_FLAGS = -w -Wl,-subsystem,windows
-# #COMPILER_FLAGS = -w -Wl,-subsystem
-
-# #LINKER_FLAGS specifies the libraries we're linking against
-# LINKER_FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image
-# #LINKER_FLAGS = -lSDL2main -lSDL2 -lSDL2_image
-
-# #OBJ_NAME specifies the name of our exectuable
-# OBJ_NAME = bin/Debug/main
-
-# #This is the target that compiles our executable
-#  all : $(OBJS)
-#  	$(CC) $(OBJS) $(INCLUDE_PATHS) $(LIBRARY_PATHS) $(COMPILER_FLAGS) $(LINKER_FLAGS) -o $(OBJ_NAME)
-
-# #all : $(OBJS)
-# #	$(CC) $(OBJS) $(COMPILER_FLAGS) $(LINKER_FLAGS) -o $(OBJ_NAME)
-
-
 CXX ?= g++
 
 # path #
@@ -99,7 +64,7 @@ all: $(BIN_PATH)/$(BIN_NAME)
 # Creation of the executable
 $(BIN_PATH)/$(BIN_NAME): $(OBJECTS)
 	@echo "Linking: $@"
-	$(CXX) $(OBJECTS) -o $@ $(LINKER_FLAGS)
+	$(CXX) -g $(OBJECTS) -o $@ $(LINKER_FLAGS)
 
 # Add dependency files, if they exist
 -include $(DEPS)

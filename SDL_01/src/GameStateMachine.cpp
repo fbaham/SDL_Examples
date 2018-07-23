@@ -5,7 +5,7 @@ void GameStateMachine::update()
 {
 	if(m_gameStates.empty())
 	{
-		std::cout << "Nada cargado";
+		std::cout << "Nada cargado\n";
 		return;
 	}
 	m_gameStates.back()->getStateID();
@@ -16,7 +16,7 @@ void GameStateMachine::render()
 {
 	if(m_gameStates.empty())
 	{
-		std::cout << "Nada cargado render";
+		std::cout << "Nada cargado render\n";
 		return;	
 	}
 	m_gameStates.back()->render();

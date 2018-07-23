@@ -14,7 +14,7 @@ bool StateParser::parseState(const char *stateFile, string stateID, vector<GameO
 	if(!xmlDoc.LoadFile(stateFile))
 	{
 		cerr << xmlDoc.ErrorStr() << "\n";
-		return false;
+		//return false;
 	}
 	// get the root element
 	XMLElement* pRoot = xmlDoc.RootElement();
