@@ -1,8 +1,8 @@
 #ifndef __PLAYER__
 #define __PLAYER__
 
-#include "LoaderParams.h"
 #include "SDLGameObject.h"
+#include "GameObjectFactory.h"
 
 class Player : public SDLGameObject // inerit from GameObject
 {
@@ -16,6 +16,15 @@ public:
 
 private:
 	void handleInput();
+};
+
+// for the factory
+class PlayerCreator : public BaseCreator
+{
+    GameObject* createGameObject() const
+    {
+        return new Player();
+    }
 };
 
 #endif

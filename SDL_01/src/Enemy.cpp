@@ -11,6 +11,7 @@ Enemy::Enemy() : SDLGameObject()
 void Enemy::load(const LoaderParams *pParams)
 {
 	SDLGameObject::load(pParams);
+	m_velocity.setY(2);
 }
 
 void Enemy::draw()

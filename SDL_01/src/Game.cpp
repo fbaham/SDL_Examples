@@ -61,7 +61,9 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	TheInputHandler::Instance()->initialiseJoysticks();
 
 	TheGameObjectFactory::Instance()->registerType("MenuButton", new MenuButtonCreator());
-
+	TheGameObjectFactory::Instance()->registerType("Player", new PlayerCreator());
+	TheGameObjectFactory::Instance()->registerType("Enemy", new EnemyCreator());
+	
 	m_pGameStateMachine = new GameStateMachine();
 	m_pGameStateMachine->changeState(new MainMenuState());
 

@@ -55,11 +55,11 @@ bool MainMenuState::onExit()
 	}
 	m_gameObjects.clear();
 
-	// clear the texture manager
-	// for(int i = 0; i < m_textureIDList.size(); i++)
-	// {
-	// 	TheTextureManager::Instance()->clearFromTextureMap(m_textureIDList[i]);
-	// }
+	//clear the texture manager
+	for(int i = 0; i < m_textureIDList.size(); i++)
+	{
+		TheTextureManager::Instance()->clearFromTextureMap(m_textureIDList[i]);
+	}
 	TheInputHandler::Instance()->reset();
 
 	std::cout << "exiting MainMenuState\n";
