@@ -40,25 +40,6 @@ void GameStateMachine::popState()
 	}
 }
 
-// void GameStateMachine::changeState(GameState *pState)
-// {
-// 	std::cout << "Change State\n";
-// 	if(!m_gameStates.empty())
-// 	{
-// 		std::cout << "GameStates empty\n";
-// 		if(m_gameStates.back()->getStateID() == pState->getStateID())
-// 		{
-// 			return; // do nothing
-// 		}
-
-// 		popState();
-// 	}
-// 	// push back our new state
-// 	m_gameStates.push_back(pState);
-// 	// initialise it
-// 	m_gameStates.back()->onEnter();
-// }
-
 void GameStateMachine::changeState(GameState *pState)
 {
     if(!m_gameStates.empty())

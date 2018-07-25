@@ -7,20 +7,26 @@
 class Enemy : public SDLGameObject
 {
 public:
-	Enemy ();
-	virtual void load(const LoaderParams* pParams);
+	Enemy () : SDLGameObject()
+	{
+		m_velocity.setY(2);
+		m_velocity.setX(0.001);
+	}
+	virtual void load(const LoaderParams* pParams)
+	{
+		SDLGameObject::load(pParams);
+		m_velocity.setY(2);
+	}
 	//void load(int x, int y, int width, int height, std::string textureID);
-	virtual void draw();
-	virtual void update();
-	virtual void clean();
-};
 
-class EnemyCreator : public BaseCreator
-{
-    GameObject* createGameObject() const
-    {
-        return new Enemy();
-    }
+	virtual void draw()
+	{
+		SDLGameObject::draw();
+	}
+
+
+	virtual void update()=0;
+	virtual void clean(){}
 };
 
 #endif

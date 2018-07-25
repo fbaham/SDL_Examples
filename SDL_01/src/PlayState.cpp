@@ -21,7 +21,7 @@ void PlayState::update()
 	{
 		m_gameObjects[i]->update();
 	}
-
+	//Modificar para que vea otras colisiones
 	if(checkCollision(dynamic_cast<SDLGameObject*> (m_gameObjects[0]), dynamic_cast<SDLGameObject*> (m_gameObjects[1])))
 	{
 		TheGame::Instance()->getStateMachine()->pushState(new GameOverState());

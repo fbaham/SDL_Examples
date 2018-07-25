@@ -3,13 +3,14 @@
 #include "TextureManager.h"
 #include "Game.h"
 #include "Player.h"
-#include "Enemy.h"
+#include "HelicopterUD.h"
 #include "GameStateMachine.h"
 #include "PlayState.h"
 #include "MenuState.h"
 #include "MainMenuState.h"
 #include "GameObjectFactory.h"
 #include "MenuButton.h"
+#include "AnimatedGraphic.h"
 
 using namespace std;
 
@@ -62,7 +63,11 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	TheGameObjectFactory::Instance()->registerType("MenuButton", new MenuButtonCreator());
 	TheGameObjectFactory::Instance()->registerType("Player", new PlayerCreator());
-	TheGameObjectFactory::Instance()->registerType("Enemy", new EnemyCreator());
+	TheGameObjectFactory::Instance()->registerType("Enemy1", new HelicopterUDCreator());
+	TheGameObjectFactory::Instance()->registerType("Enemy2", new HelicopterUDCreator());
+	TheGameObjectFactory::Instance()->registerType("Enemy3", new HelicopterUDCreator());
+	TheGameObjectFactory::Instance()->registerType("Enemy4", new HelicopterUDCreator());
+	TheGameObjectFactory::Instance()->registerType("AnimatedGraphic", new AnimatedGraphicCreator());
 	
 	m_pGameStateMachine = new GameStateMachine();
 	m_pGameStateMachine->changeState(new MainMenuState());

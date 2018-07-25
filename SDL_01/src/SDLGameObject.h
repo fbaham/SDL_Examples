@@ -1,7 +1,7 @@
 #ifndef __SDL_GAME_OBJECT__
 #define __SDL_GAME_OBJECT__
 
-#include "LoaderParams.h"
+//#include "LoaderParams.h"
 #include "GameObject.h"
 #include "Vector2D.h"
 

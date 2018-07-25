@@ -1,8 +1,9 @@
-#ifndef __ANIMATEDGRAPHIC__
-#define __ANIMATEDGRAPHIC__
+#ifndef __ANIMATED_GRAPHIC__
+#define __ANIMATED_GRAPHIC__
 
+#include <iostream>
 #include"SDLGameObject.h"
-#include"LoaderParams.h"
+#include "GameObjectFactory.h"
 
 class AnimatedGraphic : public SDLGameObject
 {
@@ -15,6 +16,16 @@ class AnimatedGraphic : public SDLGameObject
 
     private:
         int m_animateSpeed;
+};
+
+class AnimatedGraphicCreator : public BaseCreator
+{
+public:
+    
+    virtual GameObject* createGameObject() const
+    {
+        return new AnimatedGraphic();
+    }
 };
 
 #endif

@@ -17,7 +17,10 @@
 		</TEXTURES>
 		<OBJECTS>
 			<object type="Player" x="500" y="100" width="128" height="55" textureID="helicopter" numFrames="4"/>
-			<object type="Enemy" x="100" y="100" width="128" height="55" textureID="helicopter2" numFrames="4"/>
+			<object type="Enemy1" x="100" y="100" width="128" height="55" textureID="helicopter2" numFrames="4"/>
+			<object type="Enemy2" x="100" y="200" width="128" height="55" textureID="helicopter2" numFrames="4"/>
+			<object type="Enemy3" x="100" y="300" width="128" height="55" textureID="helicopter2" numFrames="4"/>
+			<object type="Enemy4" x="100" y="400" width="128" height="55" textureID="helicopter2" numFrames="4"/>
 		</OBJECTS>
 	</PLAY>
 	<PAUSE>
@@ -31,5 +34,15 @@
 	</OBJECTS>
 	</PAUSE>
 	<GAMEOVER>
+		<TEXTURES>
+			<texture filename="assets/gameover.png" ID="gameovertext"/>
+			<texture filename="assets/main.png" ID="mainbutton"/>
+			<texture filename="assets/restart.png" ID="restartbutton"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="AnimatedGraphic" x="200" y="100" width="190" height="30" textureID="gameovertext" numFrames="2" animSpeed="2"/>
+			<object type="MenuButton" x="200" y="200" width="200" height="80" textureID="mainbutton" numFrames="0" callbackID="1"/>
+			<object type="MenuButton" x="200" y="300" width="200" height="80" textureID="restartbutton" numFrames="0" callbackID="2"/>
+		</OBJECTS>
 	</GAMEOVER>
 </STATES>
