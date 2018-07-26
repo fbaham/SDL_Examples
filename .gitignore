@@ -1,6 +1,3 @@
-.vscode
-Makefile
-
 # Prerequisites
 *.d
 
@@ -33,3 +30,6 @@ Makefile
 *.exe
 *.out
 *.app
+
+.vscode
+Makefile
