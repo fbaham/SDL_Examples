@@ -22,16 +22,17 @@ OBJECTS = $(SOURCES:$(SRC_PATH)/%.$(SRC_EXT)=$(BUILD_PATH)/%.o)
 DEPS = $(OBJECTS:.o=.d)
 
 # flags #
-COMPILE_FLAGS = -std=c++11 -Wall -Wextra -g
-INCLUDES = -I include/ -I /usr/local/include
+COMPILE_FLAGS = -w -Wl,-subsystem,windows
+INCLUDES = -IC:/TDM-GCC-64/include/SDL2
 # Space-separated pkg-config libraries used by this project
-LIBS =
+LIBS = -LC:/TDM-GCC-64/lib
+LINKER_FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image
 
 .PHONY: default_target
 default_target: release
 
 .PHONY: release
-release: export CXXFLAGS := $(CXXFLAGS) $(COMPILE_FLAGS)
+release: export CXXFLAGS := $(CXXFLAGS) $(COMPILE_FLAGS)# $(LIBS) 
 release: dirs
 	@$(MAKE) all
 
@@ -59,7 +60,7 @@ all: $(BIN_PATH)/$(BIN_NAME)
 # Creation of the executable
 $(BIN_PATH)/$(BIN_NAME): $(OBJECTS)
 	@echo "Linking: $@"
-	$(CXX) $(OBJECTS) -o $@
+	$(CXX) $(OBJECTS) $(LINKER_FLAGS) -o $@
 
 # Add dependency files, if they exist
 -include $(DEPS)
